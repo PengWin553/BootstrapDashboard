@@ -1,2 +1,2 @@
-# BootstrapDashboard
-This is a trial dashboard using only bootstrap.
+# pengwin-learning-tailwind
+This is a repository dedicated to my Tailwind journey.
