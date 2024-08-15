@@ -1,0 +1,56 @@
+1. Initialize the project (the root folder)
+    Type this in the terminal: npm init -y
+2. Create a "public" folder to store the HTML and CSS files
+3. Inisde the "public" folder, create an HTML file with the boilerplate code.
+4. Go to the tailwindcss.com (or the official tailwind website)
+5. Install Tailwind via CLI
+    Type this in the terminal: npm i -D tailwindcss
+
+If you look at your current package.json file, it will include the Tailwind dependency.
+
+6. Initialize Tailwindcss (so that the tailwind.configjs file will be created.)
+    Type this in the terminal: npx tailwind init
+
+7. Configure the template path (Meaning... specify which files and folders that will utilize tailwind)
+    In the tailwind.config.js file, this is what it looks like:
+
+    content: ["./public/**/*.{html, js}"],   //the meanining: ./theRootFolderContainingTheTailwindPresentFiles/lookForSubfolders/*.{look for html and js files that contain tailwind}
+
+    In this example, we'll settle with:
+
+        content: ["./public/*.html"],        //the meaning: we only have the public folder that has no subfolders, which only contaains html files for tailwindcss
+
+8. Create the input.css file.
+
+    Create a new folder in the root folder named "src", and in it, create a new file named "input.css"
+
+    this input.css file contains these three lines:
+
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+9. Create the actual output.css file
+    Type this in the terminal:
+        npx tailwindcss -i ./src/input.css -o ./public/style.css
+
+10. Add a watch flag  
+    Type this in the terminal: 
+        npx tailwindcss -i ./src/input.css -o ./public/style.css --watch
+
+    Whenever we make any changes to our input.css file or add any utility classes, we don't have to run the script again and again
+    This watch flag will lookout for changes and reruns the tailwind script again automatically
+
+11. When you close the folder and open it again, you have to type the long  npx tailwindcss -i ./src/input.css -o ./public/style.css --watch again.
+    Instead, what youll do instead is this in the package.json file:
+
+        "scripts":{
+            "build": "npx tailwindcss -i ./src/input.css -o ./public/style.css --watch"
+        }
+
+    You'll only have to type "npm run build" to re-run the program again. 
+
+12. Link the html file and the css file to use the tailwind utility classes
+    <link rel="stylesheet" href="style.css">
+
+13. Install Tailwind CSS Intellisense by Tailwind Labs; and live server (if you still don't have it)
